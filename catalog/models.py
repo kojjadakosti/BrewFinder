@@ -19,8 +19,8 @@ class Brewery(models.Model):
 class BeerStyle(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField(max_length=1024)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -32,8 +32,8 @@ class Beer(models.Model):
     abv = models.DecimalField(max_digits=4, decimal_places=2)
     type = models.ForeignKey(to=BeerStyle, on_delete=models.SET_NULL, null=True)
     brewery = models.ForeignKey(to=Brewery, on_delete=models.CASCADE)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
