@@ -3,11 +3,11 @@ from rest_framework.exceptions import PermissionDenied
 
 from catalog.models import Beer, BeerStyle, Brewery
 from catalog.permissions import IsAdminUserOrReadOnly, IsBreweryOwnerOrAdmin
-from catalog.serializers import (
-    BeerListSerializer, BeerDetailSerializer,
-    BeerStyleListSerializer, BeerStyleDetailSerializer,
-    BreweryListSerializer, BreweryDetailSerializer
-)
+from catalog.serializers import (BeerDetailSerializer, BeerListSerializer,
+                                 BeerStyleDetailSerializer,
+                                 BeerStyleListSerializer,
+                                 BreweryDetailSerializer,
+                                 BreweryListSerializer)
 
 
 class BeerViewSet(viewsets.ModelViewSet):
@@ -19,6 +19,7 @@ class BeerViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         brewery = serializer.validated_data.get('brewery')
+
         if not self.request.user.is_superuser and brewery.owner != self.request.user:
             raise PermissionDenied("Вы не являетесь владельцем этой пивоварни.")
         serializer.save()

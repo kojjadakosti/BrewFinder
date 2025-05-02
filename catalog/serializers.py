@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from catalog.models import BeerStyle, Brewery, Beer
+from catalog.models import Beer, BeerStyle, Brewery
 
 
 class BeerStyleDetailSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from catalog.views import BeerViewSet, BeerStyleViewSet, BreweryViewSet
+from catalog.views import BeerStyleViewSet, BeerViewSet, BreweryViewSet
 
 app_name = 'catalog'
 
