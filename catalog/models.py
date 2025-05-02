@@ -30,8 +30,8 @@ class Beer(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField(max_length=1024)
     abv = models.DecimalField(max_digits=4, decimal_places=2)
-    type = models.ForeignKey(to=BeerStyle, on_delete=models.SET_NULL, null=True)
-    brewery = models.ForeignKey(to=Brewery, on_delete=models.CASCADE)
+    type = models.ForeignKey(to=BeerStyle, on_delete=models.SET_NULL, null=True, related_name='beers')
+    brewery = models.ForeignKey(to=Brewery, on_delete=models.CASCADE, related_name='beers')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
