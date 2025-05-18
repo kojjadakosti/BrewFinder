@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'dashboard',
     'interactions',
     'rest_framework',
+    'frontend',
 ]
 
 MIDDLEWARE = [
